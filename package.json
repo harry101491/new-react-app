@@ -1,6 +1,11 @@
 {
   "name": "new-react-proj",
   "version": "0.1.0",
+  "author": {
+    "name": "Harshit Pareek",
+    "age": 26,
+    "email": "hars.pareek@nyu.edu"
+  },
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
