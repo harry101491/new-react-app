@@ -21,26 +21,89 @@ class App extends Component {
     ]
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     console.log("Inside the Switch Name Handler");
+    // DO NOT Attempt to DO this No Direct Mutation this.state.persons[0].name = "Pareek";
+    this.setState({
+      persons: [
+        {
+          name: newName,
+          age: 26
+        },
+        {
+          name: "Aniket",
+          age: 29,
+          hobbies: "Cricket"
+        },
+        {
+          name: "Ricardo",
+          age: 27
+        }
+      ]
+    });
+  }
+
+  nameChangedHandler = (event) => {
+    console.log("Inside the change of the event");
+    this.setState({
+      persons: [
+        {
+          name: event.target.value,
+          age: 26
+        },
+        {
+          name: "Aniket",
+          age: 29,
+          hobbies: "Cricket"
+        },
+        {
+          name: "Ricardo",
+          age: 27
+        }
+      ]
+    });
   }
   
   render() {
+
+    const style = {
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "10px"
+    };
+
     return (
       <div className="App">
         <h1>
           I am a React App!
         </h1>
         <button
-          onClick={ this.switchNameHandler }
+          style={ style }
+          onClick={ this.switchNameHandler.bind(this, "Pareek") }
+          //onClick={ () => this.switchNameHandler("Pareek") }
         >
           Switch Name
         </button>
-        <Person name={ this.state.persons[0].name } age={ this.state.persons[0].age } />
-        <Person name={ this.state.persons[1].name } age={ this.state.persons[1].age } >
+        <Person 
+          name={ this.state.persons[0].name } 
+          age={ this.state.persons[0].age }
+          changed={ this.nameChangedHandler } 
+        />
+        <Person 
+          name={ this.state.persons[1].name } 
+          age={ this.state.persons[1].age }
+          click={ this.switchNameHandler.bind(this, "Pareek!!") }
+          // Inefficient click={ () => this.switchNameHandler("Pareek!!") }
+          changed={ this.nameChangedHandler } 
+        >
           { this.state.persons[1].hobbies }
         </Person>
-        <Person name={ this.state.persons[2].name } age={ this.state.persons[2].age } />
+        <Person 
+          name={ this.state.persons[2].name } 
+          age={ this.state.persons[2].age }
+          changed={ this.nameChangedHandler }  
+        />
       </div>
     );
   }
