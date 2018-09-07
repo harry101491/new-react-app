@@ -18,7 +18,8 @@ class App extends Component {
         name: "Ricardo",
         age: 26
       }
-    ]
+    ],
+    showPersons: false
   };
 
   switchNameHandler = (newName) => {
@@ -40,6 +41,12 @@ class App extends Component {
           age: 27
         }
       ]
+    });
+  }
+
+  tooglePersonHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
     });
   }
 
@@ -70,8 +77,36 @@ class App extends Component {
       backgroundColor: "white",
       font: "inherit",
       border: "1px solid blue",
-      padding: "10px"
+      padding: "10px",
+      cursor: "pointer"
     };
+
+    let persons = null;
+    
+    if(this.state.showPersons) {
+      persons = (
+        <div>
+          <Person 
+            name={ this.state.persons[0].name } 
+            age={ this.state.persons[0].age }
+            changed={ this.nameChangedHandler } 
+          />
+          <Person 
+            name={ this.state.persons[1].name } 
+            age={ this.state.persons[1].age }
+            // Inefficient click={ () => this.switchNameHandler("Pareek!!") }
+            changed={ this.nameChangedHandler } 
+          >
+            { this.state.persons[1].hobbies }
+          </Person>
+          <Person 
+            name={ this.state.persons[2].name } 
+            age={ this.state.persons[2].age }
+            changed={ this.nameChangedHandler }  
+          />
+        </div>
+      );
+    }
 
     return (
       <div className="App">
@@ -80,31 +115,13 @@ class App extends Component {
         </h1>
         <button
           style={ style }
-          onClick={ this.switchNameHandler.bind(this, "Pareek") }
+          onClick={ this.tooglePersonHandler }
           //onClick={ () => this.switchNameHandler("Pareek") }
         >
           Switch Name
         </button>
-        <Person 
-          name={ this.state.persons[0].name } 
-          age={ this.state.persons[0].age }
-          changed={ this.nameChangedHandler } 
-        />
-        <Person 
-          name={ this.state.persons[1].name } 
-          age={ this.state.persons[1].age }
-          click={ this.switchNameHandler.bind(this, "Pareek!!") }
-          // Inefficient click={ () => this.switchNameHandler("Pareek!!") }
-          changed={ this.nameChangedHandler } 
-        >
-          { this.state.persons[1].hobbies }
-        </Person>
-        <Person 
-          name={ this.state.persons[2].name } 
-          age={ this.state.persons[2].age }
-          changed={ this.nameChangedHandler }  
-        />
-      </div>
+        { persons }
+        </div>
     );
   }
 }
