@@ -80,25 +80,28 @@ class App extends Component {
   }
 
   nameChangedHandler = (event, id) => {
+    // getting the index of the person with the same id
     const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
     });
 
+    // copying the person object in immutable way
     const person = {
       ...this.state.persons[personIndex]
     };
 
+    // changing the name of the person
     person.name = event.target.value;
 
+    // making a new array in an immutable way
     const persons = [
       ...this.state.persons
     ];
 
+    // updating the person in the persons array using the index
     persons[personIndex] = person;
 
-    console.log("The persons array before changing");
-    console.log(persons);
-
+    // updating the state
     this.setState({
       persons
     });
