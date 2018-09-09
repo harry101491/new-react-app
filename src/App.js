@@ -158,11 +158,22 @@ class App extends Component {
       style.backgroundColor = "red";
     }
 
+    const classes = [];
+
+    if(this.state.persons.length < 3) {
+      classes.push("red");
+    }
+    if(this.state.persons.length <=2 ) {
+      classes.push("bold");
+    }
+
+
     return (
       <div className="App">
         <h1>
           I am a React App!
         </h1>
+        <p className={ classes.join(" ") }> Dyanmically styling is bad in React </p>
         <button
           style={ style }
           onClick={ this.tooglePersonHandler }
