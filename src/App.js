@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
+// Importing Radium for including the psudo selector in the inline style
+import Radium from "radium"; 
+
 class App extends Component {
   state = {
     persons: [
@@ -114,7 +117,11 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "10px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ":hover": {
+        backgroundColor: "magenta",
+        color: "red"
+      }
     };
 
     let persons = null;
@@ -156,6 +163,10 @@ class App extends Component {
       );
 
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "brown",
+        color: "red"
+      };
     }
 
     const classes = [];
@@ -187,4 +198,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
