@@ -1,5 +1,5 @@
 import React from "react";
-import "./Person.css";
+import styles from "./Person.css";
 
 // import Radium from "radium";
 
@@ -13,7 +13,7 @@ const Person = (props) => {
     // };
     
     return (
-        <div className="Person">
+        <div className={ styles.Person }>
             <p
                 onClick={ props.click }
             >
