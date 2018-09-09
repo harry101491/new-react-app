@@ -3,7 +3,9 @@ import './App.css';
 import Person from './Person/Person';
 
 // Importing Radium for including the psudo selector in the inline style
-import Radium from "radium"; 
+// For including media queries and keyframes we have to wrap whole App
+// with StyleRoot Component
+import Radium, { StyleRoot } from "radium"; 
 
 class App extends Component {
   state = {
@@ -180,20 +182,22 @@ class App extends Component {
 
 
     return (
-      <div className="App">
-        <h1>
-          I am a React App!
-        </h1>
-        <p className={ classes.join(" ") }> Dyanmically styling is bad in React </p>
-        <button
-          style={ style }
-          onClick={ this.tooglePersonHandler }
+      <StyleRoot>
+        <div className="App">
+          <h1>
+            I am a React App!
+          </h1>
+          <p className={classes.join(" ")}> Dyanmically styling is bad in React </p>
+          <button
+            style={style}
+            onClick={this.tooglePersonHandler}
           //onClick={ () => this.switchNameHandler("Pareek") }
-        >
-          Switch Name
-        </button>
-        { persons }
+          >
+            Switch Name
+          </button>
+          {persons}
         </div>
+      </StyleRoot>
     );
   }
 }
