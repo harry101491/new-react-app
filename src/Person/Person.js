@@ -1,17 +1,19 @@
 import React from "react";
 import "./Person.css";
 
-import Radium from "radium";
+// import Radium from "radium";
 
 const Person = (props) => {
-    const inlineStyle = {
-        "@media (min-width: 500px)": {
-            width: "200px"
-        }
-    };
+
+    // adding the media query with Radium third party package
+    // const inlineStyle = {
+    //     "@media (min-width: 500px)": {
+    //         width: "200px"
+    //     }
+    // };
     
     return (
-        <div className="Person" style={ inlineStyle }>
+        <div className="Person">
             <p
                 onClick={ props.click }
             >
@@ -25,4 +27,4 @@ const Person = (props) => {
     );
 };
 
-export default Radium(Person);
+export default Person;

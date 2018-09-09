@@ -5,7 +5,7 @@ import Person from './Person/Person';
 // Importing Radium for including the psudo selector in the inline style
 // For including media queries and keyframes we have to wrap whole App
 // with StyleRoot Component
-import Radium, { StyleRoot } from "radium"; 
+// import Radium, { StyleRoot } from "radium"; 
 
 class App extends Component {
   state = {
@@ -120,10 +120,10 @@ class App extends Component {
       border: "1px solid blue",
       padding: "10px",
       cursor: "pointer",
-      ":hover": {
-        backgroundColor: "magenta",
-        color: "red"
-      }
+      // ":hover": {
+      //   backgroundColor: "magenta",
+      //   color: "red"
+      // }
     };
 
     let persons = null;
@@ -165,10 +165,10 @@ class App extends Component {
       );
 
       style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "brown",
-        color: "red"
-      };
+      // style[":hover"] = {
+      //   backgroundColor: "brown",
+      //   color: "red"
+      // };
     }
 
     const classes = [];
@@ -182,24 +182,23 @@ class App extends Component {
 
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>
-            I am a React App!
+      <div className="App">
+        <h1>
+          I am a React App!
           </h1>
-          <p className={classes.join(" ")}> Dyanmically styling is bad in React </p>
-          <button
-            style={style}
-            onClick={this.tooglePersonHandler}
-          //onClick={ () => this.switchNameHandler("Pareek") }
-          >
-            Switch Name
+        <p className={classes.join(" ")}> Dyanmically styling is bad in React </p>
+        <button
+          style={style}
+          onClick={this.tooglePersonHandler}
+        //onClick={ () => this.switchNameHandler("Pareek") }
+        >
+          Switch Name
           </button>
-          {persons}
-        </div>
-      </StyleRoot>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App);
+// export default Radium(App);
+export default App;
