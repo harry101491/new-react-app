@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Cockpit.css";
 
 const Cockpit = (props) => {
-
+    console.log("[Cockpit.js] Inside the render()");
     let btnClass = null;
     let appliedClasses = [];
 
@@ -20,7 +20,7 @@ const Cockpit = (props) => {
     
     return(
         <div className={ styles.Cockpit }>
-            <h1> I am a React App! </h1>
+            <h1> { props.title } </h1>
             <p className={ appliedClasses.join(" ") }> Dyanmically styling is bad in React </p>
             <button
                 onClick={ props.clicked }

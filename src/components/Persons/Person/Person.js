@@ -1,36 +1,64 @@
-import React from "react";
+import React, { Component } from "react";
 import styles from "./Person.css";
 
 // import Radium from "radium";
 
-const Person = (props) => {
+// const Person = (props) => {
+//     console.log("Inside the Person component");
+//     return (
+//         <div className={ styles.Person }>
+//             <p
+//                 onClick={ props.click }
+//             >
+//                 Inside the { props.name } and I am { props.age } years old!
+//             </p>
+//             <p>
+//                 { props.children }
+//             </p>
+//             <input type="text" onChange={ props.changed } value={ props.name }/>
+//         </div>
+//     );
+// };
 
-    // adding the media query with Radium third party package
-    // const inlineStyle = {
-    //     "@media (min-width: 500px)": {
-    //         width: "200px"
-    //     }
-    // };
-
-    // let rand = Math.random();
-
-    // if(rand > 0.7) {
-    //     throw new Error("Something went wrong");
+class Person extends Component {
+    
+    /**
+     * ComponentWillMount method of the Person Component
+     */
+    // componentWillMount() { 
+    //     console.log("Inside the component will mount method of the Person");
     // }
     
-    return (
-        <div className={ styles.Person }>
-            <p
-                onClick={ props.click }
-            >
-                Inside the { props.name } and I am { props.age } years old!
-            </p>
-            <p>
-                { props.children }
-            </p>
-            <input type="text" onChange={ props.changed } value={ props.name }/>
-        </div>
-    );
-};
+    /**
+     * ComponentDidMount method of the Person Component
+     */
+    componentDidMount() {
+        console.log("[Person.js] Inside the componentDidMount()");
+    }
+
+    /**
+     * CompoentWillUnMount method of the Person Component
+     */
+    componentWillUnmount() {
+        console.log("[Person.js] Inside the componentWillUnmount()");
+    }
+
+    render() {
+        console.log("[Person.js] Inside the render()");
+        return (
+            <div className={styles.Person}>
+                <p
+                    onClick={this.props.click}
+                >
+                    Inside the {this.props.name} and I am {this.props.age} years old!
+                </p>
+                <p>
+                    {this.props.children}
+                </p>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </div>
+        );
+    }
+}
 
 export default Person;
