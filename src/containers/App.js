@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 // Importing the all the style classes that are defined in the App.css
 // as object. It is done by the css loader behind the scenes
 import styles from './App.css';
-import Person from './Person/Person';
+import Person from "../components/Persons/Person/Person";
 
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+// import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 // Importing Radium for including the psudo selector in the inline style
 // For including media queries and keyframes we have to wrap whole App
@@ -140,15 +140,13 @@ class App extends Component {
           {/* Way of sending the array or list in jsx */}
           { 
             this.state.persons.map((person, index) => {
-              return <ErrorBoundary key={ person.id }>
-                <Person
-                  click={ this.deletePersonHandler.bind(this, index) }
-                  name={ person.name } 
-                  age={ person.age }
-                  
-                  changed={ (event) => this.nameChangedHandler(event, person.id) } 
-                />
-              </ErrorBoundary>
+              return <Person
+                click={ this.deletePersonHandler.bind(this, index) }
+                name={ person.name } 
+                age={ person.age }
+                key={ person.id }
+                changed={ (event) => this.nameChangedHandler(event, person.id) } 
+              />
             })
           }
           {/* <Person 
