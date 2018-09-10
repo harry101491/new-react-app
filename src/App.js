@@ -117,19 +117,20 @@ class App extends Component {
   
   render() {
 
-    const style = {
-      backgroundColor: "green",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "10px",
-      cursor: "pointer",
-      // ":hover": {
-      //   backgroundColor: "magenta",
-      //   color: "red"
-      // }
-    };
+    // const style = {
+    //   backgroundColor: "green",
+    //   font: "inherit",
+    //   border: "1px solid blue",
+    //   padding: "10px",
+    //   cursor: "pointer",
+    //   ":hover": {
+    //     backgroundColor: "magenta",
+    //     color: "red"
+    //   }
+    // };
 
     let persons = null;
+    let btnDynamicClass = null;
     
     if(this.state.showPersons) {
       persons = (
@@ -167,11 +168,12 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = "red";
+      // style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "brown",
       //   color: "red"
       // };
+      btnDynamicClass = styles.Red;
     }
 
     const classes = [];
@@ -191,7 +193,7 @@ class App extends Component {
           </h1>
         <p className={classes.join(" ")}> Dyanmically styling is bad in React </p>
         <button
-          style={style}
+          className={ btnDynamicClass }
           onClick={this.tooglePersonHandler}
         //onClick={ () => this.switchNameHandler("Pareek") }
         >
