@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import styles from './App.css';
 import Person from './Person/Person';
 
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+
 // Importing Radium for including the psudo selector in the inline style
 // For including media queries and keyframes we have to wrap whole App
 // with StyleRoot Component
@@ -138,13 +140,15 @@ class App extends Component {
           {/* Way of sending the array or list in jsx */}
           { 
             this.state.persons.map((person, index) => {
-              return <Person
-                click={ this.deletePersonHandler.bind(this, index) }
-                name={ person.name } 
-                age={ person.age }
-                key={ person.id }
-                changed={ (event) => this.nameChangedHandler(event, person.id) } 
-              />
+              return <ErrorBoundary key={ person.id }>
+                <Person
+                  click={ this.deletePersonHandler.bind(this, index) }
+                  name={ person.name } 
+                  age={ person.age }
+                  
+                  changed={ (event) => this.nameChangedHandler(event, person.id) } 
+                />
+              </ErrorBoundary>
             })
           }
           {/* <Person 

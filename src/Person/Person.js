@@ -11,6 +11,12 @@ const Person = (props) => {
     //         width: "200px"
     //     }
     // };
+
+    // let rand = Math.random();
+
+    // if(rand > 0.7) {
+    //     throw new Error("Something went wrong");
+    // }
     
     return (
         <div className={ styles.Person }>
