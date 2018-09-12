@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 // Importing the all the style classes that are defined in the App.css
 // as object. It is done by the css loader behind the scenes
@@ -13,7 +13,7 @@ import Cockpit from './Cockpit/Cockpit';
 // with StyleRoot Component
 // import Radium, { StyleRoot } from "radium"; 
 
-class App extends Component {
+class App extends PureComponent {
 
   /**
    * Constructor First function that runs in the life cycle of the component
@@ -86,6 +86,37 @@ class App extends Component {
     this.setState({
       showPersons: !this.state.showPersons
     });
+  }
+
+  /**
+   * shouldComponentUpdate method will be called when the state change same as when the props 
+   * change 
+   * 
+   * It is highly critical that we should make sure that render method will be called only when
+   * state has changed and not when the state remains the same
+   * 
+   * We can extend our component with PureComponents which makes sure that state will be checked before
+   * calling the render method that will improve the performance. 
+   * Can Do -> Sync the new state and old state
+   * Should Not Do -> Call the side effects
+   * @param {*} nextProps 
+   * @param {*} nextState 
+   */
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log("[UPDATE App.js] Inside the shouldComponentUpdate", nextState);
+  //   return nextState.persons !== this.state.persons || nextState.showPersons !== this.state.showPersons;
+  // }
+
+  /**
+   * componentWillUpdate method will be called after the shouldupdate if it is true
+   * 
+   * Can Do -> Sync the new state and old state
+   * Should Not Do -> Call the side effects
+   * @param {*} nextProps 
+   * @param {*} nextState 
+   */
+  componentWillUpdate(nextProps, nextState) {
+    console.log("[UPDATE App.js] Inside the componentWillUpdate", nextState);
   }
 
   nameChangedHandler = (event, id) => {

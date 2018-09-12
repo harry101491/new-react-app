@@ -39,7 +39,25 @@ class Persons extends Component {
      */
     componentWillUnmount() {
         console.log("[Persons.js] Inside the componentWillUnmount()");
-    }    
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        console.log("[UPDATE Persons.js] Inside the componentWillReceiveProps", nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("[UPDATE Persons.js] Inside the shouldComponentUpdate", nextProps);
+        // they are not same as copying is done immutably and it checks shallow copy not deeply
+        return nextProps.persons !== this.props.persons;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log("[UPDATE Persons.js] Inside the componentWillUpdate", nextProps, nextState);
+    }
+
+    componentDidUpdate() {
+        console.log("[UPDATE Persons.js] Inside the componentDidUpdate");
+    }
     
     render() {
         console.log("[Persons.js] Inside the render()");

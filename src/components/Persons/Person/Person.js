@@ -28,6 +28,46 @@ class Person extends Component {
     // componentWillMount() { 
     //     console.log("Inside the component will mount method of the Person");
     // }
+
+    /**
+     * componentWillUpdate() method will be called when props have been updated
+     * by the parent
+     * Can Do -> Sync the state with the updated props
+     * Should not Do -> Cause side effects like server calls
+     */
+    // componentWillUpdate(updatedProps) {
+    //     console.log("[Person.js] Inside the componentWillUpdate()");
+    //     console.log(updatedProps);
+    // }
+
+    /**
+     * shouldComponentUpdate() will be called after componentWillUpdate() method
+     * we can decide in the method that we really want to update the component 
+     * or stop the further rendering of the tree.
+     * @param {*} updatedProps 
+     * @param {*} updatedState
+     * 
+     * Can Do -> Decide whether the component should update or not
+     * Should Not Do -> Call the side effects 
+     */
+    // shouldComponentUpdate(updatedProps, updatedState) {
+    //     console.log("[Person.js] Inside the shouldComponentUpdate()");
+    //     if(updatedProps.name === "Harshit") {
+    //         return false;
+    //     }
+    //     else {
+    //         return true;
+    //     }
+    // }
+
+    /**
+     * componentDidUpdate() the function called when all the children has been updated
+     * Can Do -> Call the side effects like server calls
+     * Should Not Do -> update the state as it will again call render() method
+     */
+    // componentDidUpdate() {
+    //     console.log("[Person.js] Inside the componentDidUpdate()");
+    // }
     
     /**
      * ComponentDidMount method of the Person Component
