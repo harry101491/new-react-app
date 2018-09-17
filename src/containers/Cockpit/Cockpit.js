@@ -2,6 +2,8 @@ import React from "react";
 
 import styles from "./Cockpit.css";
 
+import Aux from "../../hoc/Aux/Aux";
+
 const Cockpit = (props) => {
     console.log("[Cockpit.js] Inside the render()");
     let btnClass = null;
@@ -19,7 +21,7 @@ const Cockpit = (props) => {
     }
     
     return(
-        <div className={ styles.Cockpit }>
+        <Aux>
             <h1> { props.title } </h1>
             <p className={ appliedClasses.join(" ") }> Dyanmically styling is bad in React </p>
             <button
@@ -27,8 +29,8 @@ const Cockpit = (props) => {
                 className={ btnClass }
             >
                 Switch Name
-            </button>  
-        </div>
+            </button>
+        </Aux>
     );
 };
 

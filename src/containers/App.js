@@ -6,6 +6,10 @@ import styles from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from './Cockpit/Cockpit';
 
+// Importing the Higher Order Components
+import withClass from "../hoc/WithClass/WithClass";
+import Aux from '../hoc/Aux/Aux';
+
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 // Importing Radium for including the psudo selector in the inline style
@@ -168,7 +172,7 @@ class App extends PureComponent {
       );
     }
     return (
-      <div className={styles.App}>
+      <Aux>
         <Cockpit
           title={ this.props.appTitle } 
           clicked={ this.tooglePersonHandler }
@@ -176,9 +180,9 @@ class App extends PureComponent {
           persons={ this.state.persons }
         />
         {persons}
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);
