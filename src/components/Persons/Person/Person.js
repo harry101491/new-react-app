@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import styles from "./Person.css";
 
+import Aux from "../../../hoc/Aux/Aux";
+import withClass from "../../../hoc/WithClass/WithClass";
+
 // import Radium from "radium";
 
 // const Person = (props) => {
@@ -86,7 +89,7 @@ class Person extends Component {
     render() {
         console.log("[Person.js] Inside the render()");
         return (
-            <div className={styles.Person}>
+            <Aux>
                 <p
                     onClick={this.props.click}
                 >
@@ -96,9 +99,9 @@ class Person extends Component {
                     {this.props.children}
                 </p>
                 <input type="text" onChange={this.props.changed} value={this.props.name} />
-            </div>
+            </Aux>
         );
     }
 }
 
-export default Person;
+export default withClass(Person, styles.Person);

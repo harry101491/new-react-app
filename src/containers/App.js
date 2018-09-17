@@ -49,7 +49,8 @@ class App extends PureComponent {
           age: 26
         }
       ],
-      showPersons: false
+      showPersons: false,
+      toggleClicked: 0
     };
 
   }
@@ -87,8 +88,21 @@ class App extends PureComponent {
   }
 
   tooglePersonHandler = () => {
-    this.setState({
-      showPersons: !this.state.showPersons
+    // the setState function is called async by the react so accessing the 
+    // this.state might not give the latest value of toggleClicked in the case
+    // where we are trying to access the same things in some other place.
+    // this.setState({
+    //   showPersons: !this.state.showPersons,
+    //   toggleClicked: this.state.toggleClicked + 1
+    // });
+
+    // the better approach would be call a function which has the prevState to access the 
+    // toggleClicked property
+    this.setState((prevState, props) => {
+      return {
+        showPersons: !prevState.showPersons,
+        toggleClicked: prevState.toggleClicked + 1
+      };
     });
   }
 
