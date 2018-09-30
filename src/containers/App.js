@@ -164,6 +164,15 @@ class App extends PureComponent {
       persons
     });
   }
+
+  /**
+   * New lifecycle hooks being added in the React all methods with
+   * the Will prefix are discouraged
+   */
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("[App.js] Inside the getDerivedStateFromProps()", nextProps, prevState);
+    return prevState;
+  }
   
   /**
    * Most important function in the life cycle of the Component

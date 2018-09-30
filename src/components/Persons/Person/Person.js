@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styles from "./Person.css";
 
+import PropType from "prop-types";
+
 import Aux from "../../../hoc/Aux/Aux";
 import withClass from "../../../hoc/WithClass/WithClass";
 
@@ -24,6 +26,11 @@ import withClass from "../../../hoc/WithClass/WithClass";
 // };
 
 class Person extends Component {
+
+    constructor(props) {
+        super(props);
+        this.inputElement = React.createRef();
+    }
     
     /**
      * ComponentWillMount method of the Person Component
@@ -77,6 +84,13 @@ class Person extends Component {
      */
     componentDidMount() {
         console.log("[Person.js] Inside the componentDidMount()");
+        if(this.props.position === 0) {
+            this.inputElement.current.focus();
+        }
+    }
+
+    focus() {
+        this.inputElement.current.focus();
     }
 
     /**
@@ -98,10 +112,23 @@ class Person extends Component {
                 <p>
                     {this.props.children}
                 </p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
+                <input 
+                    ref={ this.inputElement }
+                    type="text" 
+                    onChange={this.props.changed} 
+                    value={this.props.name} 
+                />
             </Aux>
         );
     }
 }
+
+// Defining the PropTypes for the Person Class
+Person.propTypes = {
+    click: PropType.func,
+    name: PropType.string,
+    changed: PropType.func,
+    age: PropType.number
+};
 
 export default withClass(Person, styles.Person);

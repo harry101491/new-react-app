@@ -19,6 +19,12 @@ import Person from "./Person/Person";
 // };
 
 class Persons extends Component {
+
+    constructor(props) {
+        super(props);
+        this.lastElementRef = React.createRef();
+    }
+
     
     /**
      * ComponentWillMount method of the Persons Component
@@ -32,6 +38,7 @@ class Persons extends Component {
      */
     componentDidMount() {
         console.log("[Persons.js] Inside the componentDidMount()");
+        this.lastElementRef.current.focus();
     }
 
     /**
@@ -65,7 +72,9 @@ class Persons extends Component {
             this.props.persons.map((person, index) => {
                 return <Person
                   click={ () => this.props.clicked(index) }
-                  name={ person.name } 
+                  position={ index }
+                  name={ person.name }
+                  ref={ this.lastElementRef } 
                   age={ person.age }
                   key={ person.id }
                   changed={ (event) => this.props.changed(event, person.id) } 
